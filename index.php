@@ -77,5 +77,7 @@
             echo "</ol>";
         }
     ?>
+    <hr/>
+    <center>Supported by PHP7, PHP-XML, PHP-cURL, PHP-mbstring | (c) 2021 - Benyamin Limanto</center>
     </body>
 </html>
