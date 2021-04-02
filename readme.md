@@ -2,14 +2,33 @@
 
 This is a garage project that mimik like 68k.news, so old browser like IE8 or mosaic could access the pages
 
-this project for now only focus on Indonesia News provided by Kompas and kontan based rss (as only them that have rss)
+this project for now only focus on Indonesia News provided by kontan based rss (as only them that have rss)
 
 NO DB needed, only flat file cache. Hope this work well
 
 ## Folder Structure 
 
+```
 -- index.php (the home page, show latest rss that's fetched by server)
 -- news (the cache folde of the news that's parsed into plain HTML)
 -- news/index.php (the parser that generate html from the URL)
 -- system/parser/kontan.php (for kontan)
 -- system/parser/kompas.php (for kompas)
+```
+
+## Clean and Update News List and Cache
+
+For cleaning cache of html and rss periodically, you need to run 
+```bash
+*/5 * * * * rm /location/of/the/app/rss/*xml
+
+0 0 * * 2,4,6 rm /location/of/the/app/news/*html
+```
+
+You could put this on cron or task scheduler (based on the OS, I use Cron on Linux)
+*/5 means every minutes
+
+2,3,4 means every tuesday, thursday, and saturday
+
+## Thanks to 
+Kontan.co.id (do support them! only them now that still support rss, other way, kompas.com and other need extensive page crawl, I will add it later)
