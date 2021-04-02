@@ -4,7 +4,9 @@ This is a garage project that mimik like 68k.news, so old browser like IE8 or mo
 
 this project for now only focus on Indonesia News provided by kontan based rss (as only them that have rss)
 
-NO DB needed, only flat file cache. Hope this work well
+NO DB needed, only flat file cache HTML
+
+working/online app http://news.benyamin.xyz
 
 ## Folder Structure 
 
