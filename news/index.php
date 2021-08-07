@@ -13,6 +13,9 @@ if (realpath(__DIR__."/".urlencode($_GET['url']))) {
 $url = substr($_GET['url'],0,strlen($_GET['url'])-5) ;
 
 $ch = curl_init($url);
+$useragent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:90.0) Gecko/20100101 Firefox/90.0';
+curl_setopt($ch, CURLOPT_USERAGENT, $useragent);
+curl_setopt($ch, CURLOPT_REFERER, 'https://www.kontan.co.id/');
 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
