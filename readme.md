@@ -1,6 +1,6 @@
 # HTML RSS AGREGATOR
 
-This is a garage project that mimik like 68k.news, so old browser like IE8 or mosaic could access the pages
+This is a garage project that mimik like 68k.news, so old browser like IE8 or mosaic or old Firefox (v0.9-pre XUL) could access the pages
 
 this project for now only focus on Indonesia News provided by kontan based rss (as only them that have rss)
 
@@ -15,7 +15,7 @@ working/online app http://news.benyamin.xyz
 -- news (the cache folde of the news that's parsed into plain HTML)
 -- news/index.php (the parser that generate html from the URL)
 -- system/parser/kontan.php (for kontan)
--- system/parser/kompas.php (for kompas)
+-- system/parser/jagatreview.php (for JGR)
 ```
 
 ## Clean and Update News List and Cache
@@ -34,3 +34,5 @@ You could put this on cron or task scheduler (based on the OS, I use Cron on Lin
 
 ## Thanks to 
 Kontan.co.id (do support them! only them now that still support rss, other way, kompas.com and other need extensive page crawl, I will add it later)
+
+JagatReview.com (BEST INDONESIAN SITE FOR REVIEW!)
