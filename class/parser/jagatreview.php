@@ -109,17 +109,17 @@ class JagatReviewParser {
                 $tmp_dom->appendChild($tmp_dom->importNode($child, true));
                 
                 $advSearch = $tmp_dom->getElementById("advanced-search");
-                // var_dump($advSearch);
-                if ($advSearch == null) {
-                    var_dump($url);
-                    var_dump($tmp_dom);
-                }
                 $pageXPATH = new DOMXPath($tmp_dom);
-                $tocDOM = new DOMDocument(); 
-                $tocDOM->appendChild($tocDOM->importNode($advSearch, true));
-                // remove Daftar Isi 
-                $tmp_dom->childNodes
+                
+                // var_dump($advSearch);
+                if ($advSearch != null) {
+                  $tocDOM = new DOMDocument(); 
+                  $tocDOM->appendChild($tocDOM->importNode($advSearch, true));
+                  // remove Daftar Isi 
+                  $tmp_dom->childNodes
                     ->item(0)->removeChild($advSearch);
+                }
+
                 // remove share button 
                 $shareDOM = $pageXPATH->query("//div[contains(@class, 'sharedaddy')]")
                     ->item(0);
@@ -150,6 +150,16 @@ class JagatReviewParser {
                     $htmlDOM .= trim($tmp_dom->saveHTML());
                     $htmlDOM .= "<hr>".$this->getParsedPage($url."/".$nextPage, $nextPage, $totalPage);
                 } else if ($totalPage == 0) {
+                    // If only One Page
+                    if ($tocDOM == null) {
+                      $htmlDOM .= trim($tmp_dom->saveHTML());
+                      $htmlDOM = [
+                          "title" => $title,
+                          "article" => $htmlDOM
+                      ];
+                      return $htmlDOM;
+                    }
+
                     $tocXPATH = new DOMXPath($tocDOM);
                     // Get total Page
                     $pageCountDOM = $tocXPATH->query("//ul[@class='panel__list']")->item(0)
